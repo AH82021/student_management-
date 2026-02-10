@@ -28,11 +28,7 @@ package com.studentmgmt;
  */
 public class Course {
 
-    /*
-     * ENCAPSULATION: All variables are PRIVATE
-     * They cannot be accessed directly from outside this class
-     * Must use getters and setters
-     */
+
     private String courseCode; // Example: "CS101"
     private String courseName; // Example: "Introduction to Programming"
     private int capacity; // Maximum number of students
@@ -49,39 +45,35 @@ public class Course {
      * - enrolledCount: 0
      */
     public Course() {
-        // TODO: Initialize default values
+        courseCode = "UNASSIGNED";
+        courseName = "No Name";
+        capacity = 30;
+        enrolledCount = 0;
     }
 
     /**
      * PARAMETERIZED CONSTRUCTOR
      * 
-     * DEMONSTRATES: 'this' keyword
-     * 
      * @param courseCode The course code
      * @param courseName The course name
      * @param capacity   Maximum student capacity
-     * 
-     *                   TODO FOR STUDENTS:
-     *                   Use 'this' keyword to initialize fields
-     *                   Set enrolledCount to 0
+     *
      */
     public Course(String courseCode, String courseName, int capacity) {
-        // TODO: Use 'this' to set fields
-        // this.courseCode = courseCode;
-        // etc.
+
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.capacity = capacity;
+        enrolledCount = 0;
     }
 
-    /*
-     * =============================================================================
-     * =
-     * GETTERS AND SETTERS (ENCAPSULATION IN ACTION)
-     * =============================================================================
-     * =
-     */
+
+     // GETTERS AND SETTERS (ENCAPSULATION IN ACTION)
+
 
     public String getCourseCode() {
-        // TODO: return courseCode;
-        return null;
+
+        return courseCode;
     }
 
     /**
@@ -103,12 +95,11 @@ public class Course {
      *                   - Returns a NEW string
      */
     public void setCourseCode(String courseCode) {
-        // TODO: this.courseCode = courseCode.toUpperCase();
+        this.courseCode = courseCode.toUpperCase();
     }
 
     public String getCourseName() {
-        // TODO: return courseName;
-        return null;
+        return courseName ;
     }
 
     /**
@@ -127,15 +118,15 @@ public class Course {
      *                   - isEmpty() - checks if string is empty
      */
     public void setCourseName(String courseName) {
-        // TODO: Add validation then set
-        // if (courseName != null && !courseName.trim().isEmpty()) {
-        // this.courseName = courseName;
-        // }
+
+        if ( courseName != null && !courseName.trim().isEmpty() ){
+            this.courseName = courseName;
+        }
     }
 
+
     public int getCapacity() {
-        // TODO: return capacity;
-        return 0;
+        return this.capacity;
     }
 
     /**
@@ -149,31 +140,39 @@ public class Course {
      *                 Only set capacity if it's greater than 0
      *                 Print an error message if invalid
      */
+
     public void setCapacity(int capacity) {
-        // TODO: Add validation
-        // if (capacity > 0) {
-        // this.capacity = capacity;
-        // } else {
-        // System.out.println("Capacity must be positive!");
-        // }
+        if (capacity > 0) {
+            this.capacity = capacity;
+        } else {
+            System.out.println("Capacity must be positive!");
+        }
     }
 
+    }
+
+
+
+
+
+
     public int getEnrolledCount() {
-        // TODO: return enrolledCount;
-        return 0;
+        return this.enrolledCount;
     }
 
     /**
      * Check if course is full
      * 
      * @return true if enrolled count equals capacity
-     * 
-     *         TODO FOR STUDENTS:
-     *         Return true if enrolledCount >= capacity
+     *
      */
+
+
     public boolean isFull() {
-        // TODO: return enrolledCount >= capacity;
-        return false;
+        if( enrolledCount >= capacity){
+        return true;
+        } else { return false;}
+
     }
 
     /**
@@ -188,9 +187,14 @@ public class Course {
      *         2. If full, print message and return false
      *         3. If not full, increment enrolledCount and return true
      */
+
+    // TODO: Implement enrollment logic
     public boolean enrollStudent() {
-        // TODO: Implement enrollment logic
-        return false;
+      if(isFull()==true){
+          System.out.println("Course is full right now, Thank you!");
+          return false;
+      } else {
+          return true;
     }
 
     /**
@@ -201,9 +205,10 @@ public class Course {
      *         TODO FOR STUDENTS:
      *         Return capacity minus enrolledCount
      */
+
+
     public int getAvailableSeats() {
-        // TODO: return capacity - enrolledCount;
-        return 0;
+        return capacity - enrolledCount;
     }
 
     /**
@@ -225,26 +230,13 @@ public class Course {
      *         "[CS101] Introduction to Programming - Enrolled: 25/30"
      */
     public String getCourseInfo() {
-        // TODO: Return formatted string
-        // return String.format("[%s] %s - Enrolled: %d/%d",
-        // courseCode, courseName, enrolledCount, capacity);
-        return null;
+
+        return "[" + courseCode + "] " + courseName +
+                " - Enrolled: " + enrolledCount + "/" + capacity;
     }
 
-    /**
-     * DEMONSTRATES: String concatenation vs String.format()
-     * 
-     * Two ways to create strings:
-     * 
-     * 1. Concatenation with + operator:
-     * String result = "Name: " + name + ", Age: " + age;
-     * - Simple and readable for short strings
-     * - Can be less efficient for many concatenations
-     * 
-     * 2. String.format():
-     * String result = String.format("Name: %s, Age: %d", name, age);
-     * - More powerful and flexible
-     * - %s = string, %d = integer, %f = float, %.2f = float with 2 decimals
-     * - Better for complex formatting
-     */
+       }
+
+
+
 }
