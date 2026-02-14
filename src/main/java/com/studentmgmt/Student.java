@@ -40,14 +40,13 @@ public class Student extends Person {
      * - Must be the FIRST statement in the constructor
      * - Initializes the inherited fields
      * 
-     * TODO FOR STUDENTS:
-     * 1. Call super() to initialize Person fields
-     * 2. Initialize grade to 0.0 and major to "Undeclared"
+     *
      */
+
     public Student() {
-        // TODO: Call parent constructor
-        // super();
-        // TODO: Initialize student-specific fields
+        super();
+        this.grade = 0.0;
+        this.major = "Undeclared";
     }
     
     /**
@@ -59,16 +58,12 @@ public class Student extends Person {
      * @param grade Student's grade/GPA
      * @param major Student's major
      * 
-     * TODO FOR STUDENTS:
-     * 1. Use super(name, age, id) to initialize Person attributes
-     * 2. Use 'this' keyword to initialize Student attributes
+     *
      */
     public Student(String name, int age, String id, double grade, String major) {
-        // TODO: Call Person constructor with super keyword
-        // super(name, age, id);
-        // TODO: Initialize student-specific fields with 'this' keyword
-        // this.grade = grade;
-        // this.major = major;
+        super(name, age, id);
+        this.grade = grade;
+         this.major = major;
     }
     
     /**
@@ -88,23 +83,16 @@ public class Student extends Person {
      * - Compiler will error if method doesn't actually override anything
      * - Good practice: Always use @Override
      * 
-     * TODO FOR STUDENTS:
-     * Print student information in a formatted way:
-     * - Student ID: [id]
-     * - Name: [name]
-     * - Age: [age]
-     * - Major: [major]
-     * - Grade: [grade]
-     * 
-     * HINT: Use getName(), getAge(), getId() inherited from Person
+
      */
     @Override
     public void displayInfo() {
-        // TODO: Print student information
-        // System.out.println("===== STUDENT INFORMATION =====");
-        // System.out.println("Student ID: " + getId());
-        // System.out.println("Name: " + getName());
-        // etc...
+        System.out.println("===== STUDENT INFORMATION =====");
+         System.out.println("Student ID: " + getId());
+         System.out.println("Name: " + getName());
+         System.out.println("age: " + getAge());
+         System.out.println("Major: " + getMajor());
+         System.out.println("Grade: " + getGrade());
     }
     
     /**
@@ -115,8 +103,7 @@ public class Student extends Person {
      */
     @Override
     public String getRole() {
-        // TODO: return "Student";
-        return null;
+        return "Student";
     }
     
     /*
@@ -128,12 +115,10 @@ public class Student extends Person {
     /**
      * GET student's grade
      * 
-     * TODO FOR STUDENTS:
-     * Return the grade
+
      */
     public double getGrade() {
-        // TODO: return grade;
-        return 0.0;
+        return grade;
     }
     
     /**
@@ -141,24 +126,23 @@ public class Student extends Person {
      * 
      * @param grade The grade to set
      * 
-     * TODO FOR STUDENTS:
-     * Set the grade using 'this' keyword
-     * OPTIONAL: Validate that grade is between 0.0 and 4.0
+     *
      */
     public void setGrade(double grade) {
-        // TODO: this.grade = grade;
-        // OPTIONAL: Validate grade range
+        if (grade < 0.0 || grade > 4.0) {
+            System.out.println("Grade is Invalid");
+            return;
+        }
+        this.grade = grade;
     }
     
     /**
      * GET student's major
      * 
-     * TODO FOR STUDENTS:
-     * Return the major
+     *
      */
     public String getMajor() {
-        // TODO: return major;
-        return null;
+        return major;
     }
     
     /**
@@ -166,11 +150,10 @@ public class Student extends Person {
      * 
      * @param major The major to set
      * 
-     * TODO FOR STUDENTS:
-     * Set the major using 'this' keyword
+
      */
     public void setMajor(String major) {
-        // TODO: this.major = major;
+          this.major = major;
     }
     
     /**
@@ -181,12 +164,14 @@ public class Student extends Person {
      * 
      * @return true if student is in good standing (grade >= 2.0)
      * 
-     * TODO FOR STUDENTS:
-     * Return true if grade is >= 2.0, false otherwise
+
      */
     public boolean isInGoodStanding() {
-        // TODO: return this.grade >= 2.0;
-        return false;
+        if (this.grade >= 2.0){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     /**
@@ -196,8 +181,7 @@ public class Student extends Person {
      * 
      * @return A formatted string summary of the student
      * 
-     * TODO FOR STUDENTS:
-     * Return a string like: "Student: [name] (ID: [id]) - Major: [major], GPA: [grade]"
+
      * 
      * STRING CLASS METHODS YOU CAN USE:
      * - String.format() - for formatted output
@@ -206,9 +190,7 @@ public class Student extends Person {
      * - toLowerCase() - convert to lowercase
      */
     public String getSummary() {
-        // TODO: Return formatted student summary
-        // Example: return String.format("Student: %s (ID: %s) - Major: %s, GPA: %.2f", 
-        //              getName(), getId(), major, grade);
-        return null;
+        return String . format( "Student: " + getName() + "ID: " + getId() + "Major: " + getMajor().toUpperCase() + "GPA: " + getGrade());
+
     }
 }
