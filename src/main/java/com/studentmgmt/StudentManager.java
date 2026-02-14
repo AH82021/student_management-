@@ -44,16 +44,13 @@ public class StudentManager implements Searchable {
      * CONSTRUCTOR
      * 
      * DEMONSTRATES: Array initialization
-     * 
-     * TODO FOR STUDENTS:
-     * 1. Initialize the students array with size MAX_STUDENTS
-     * 2. Set currentSize to 0
-     * 
-     * ARRAY INITIALIZATION:
-     * students = new Student[MAX_STUDENTS];
+     *
      */
     public StudentManager() {
         // TODO: Initialize array and currentSize
+        students = new Student[MAX_STUDENTS];
+        currentSize = 0;
+
     }
 
     /**
@@ -63,25 +60,21 @@ public class StudentManager implements Searchable {
      * 
      * @param student The student to add
      * @return true if added successfully, false if array is full
-     * 
-     *         TODO FOR STUDENTS:
-     *         1. Check if currentSize < MAX_STUDENTS (array not full)
-     *         2. If not full:
-     *         - Add student to students[currentSize]
-     *         - Increment currentSize
-     *         - Return true
-     *         3. If full:
-     *         - Print "Cannot add more students"
-     *         - Return false
-     * 
-     *         ARRAY ACCESS:
-     *         students[currentSize] = student; // Add to next available position
+     *
      */
     public boolean addStudent(Student student) {
         // TODO: Implement add logic
-        return false;
-    }
+        if (currentSize < MAX_STUDENTS) {
+            students[currentSize] = student;
+            currentSize++;
+            return true;
 
+        } else {
+            System.out.println("Cannot add more student");
+
+            return false;
+        }
+    }
     /**
      * INTERFACE METHOD IMPLEMENTATION: searchById()
      * 
@@ -92,28 +85,17 @@ public class StudentManager implements Searchable {
      * 
      * @param id The student ID to search for
      * @return Student information if found, or "Not found" message
-     * 
-     *         TODO FOR STUDENTS:
-     *         1. Loop through the students array from index 0 to currentSize-1
-     *         2. For each student, check if getId().equals(id)
-     *         3. If found, return the student's information (use getSummary())
-     *         4. If not found after loop, return "Student not found"
-     * 
-     *         ARRAY LOOP PATTERN:
-     *         for (int i = 0; i < currentSize; i++) {
-     *         Student student = students[i];
-     *         // Check student
-     *         }
-     * 
-     *         STRING COMPARISON:
-     *         Use .equals() NOT ==
-     *         - id.equals(searchId) ✓ Correct
-     *         - id == searchId ✗ Wrong (compares references, not content)
+     *
      */
     @Override
     public String searchById(String id) {
-        // TODO: Implement search by ID
-        return null;
+        for (int i = 0; i < currentSize; i++) {
+            Student student = students[i];
+            if (student.getId().equals(id)) {
+                return student.getSummary();
+            }
+        }
+        return "Student not found";
     }
 
     /**
@@ -121,27 +103,24 @@ public class StudentManager implements Searchable {
      * 
      * @param name The name to search for
      * @return Information about all matching students
-     * 
-     *         TODO FOR STUDENTS:
-     *         1. Loop through students array
-     *         2. Check if getName() contains the search name (case-insensitive)
-     *         3. Collect all matching students
-     *         4. Return their information or "No students found"
-     * 
-     *         STRING METHODS FOR SEARCHING:
-     *         - contains() - check if string contains substring
-     *         - equalsIgnoreCase() - compare ignoring case
-     *         - toLowerCase() - convert to lowercase for comparison
-     * 
-     *         Example:
-     *         if (student.getName().toLowerCase().contains(name.toLowerCase())) {
-     *         // Match found!
-     *         }
+     *
      */
     @Override
     public String searchByName(String name) {
-        // TODO: Implement search by name
-        return null;
+        String result = null;
+        for (int i = 0; i < MAX_STUDENTS; i++) {
+            Student student = students[i];
+
+            if (student.getName().equals(name)) {
+                result = student.getId();
+
+            }
+        }
+
+        if (result == null) {
+            return null;
+        }
+        return result;
     }
 
     /**
