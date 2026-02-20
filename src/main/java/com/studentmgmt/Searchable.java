@@ -51,22 +51,16 @@ public interface Searchable {
      * 
      * @param id The ID to search for
      * @return A description or result of the search
-     * 
-     *         TODO FOR STUDENTS:
-     *         Do NOT implement here - this is just a declaration
-     *         The StudentManager class will implement this
+     *
      */
     String searchById(String id);
 
     /**
      * Search for items by name
-     * 
+     *
      * @param name The name to search for
      * @return A description or result of the search
-     * 
-     *         TODO FOR STUDENTS:
-     *         Do NOT implement here
-     *         The StudentManager class will implement this
+     *
      */
     String searchByName(String name);
 
